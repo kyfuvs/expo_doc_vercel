@@ -1,28 +1,11 @@
-import { Stack } from "expo-router";
+// Project/app/_layout.js
+import { ThemeProvider } from '../dark_mode/context/themeContext';
+import Layout_stack from './layout_stack';
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Stack.Screen
-        name='(tabs)'
-        options={{
-          headerShown:false,
-        }}
-      />
-    
-      <Stack.Screen 
-        name="+not-found"
-        options={{
-          headerTitle:'404 Page Not Found',
-          headerStyle: {
-            backgroundColor: 'black', // ✅ set background
-          },
-          headerTintColor: 'white', // ✅ set text/icon color
-          // headerTitleStyle: {
-          //   color: 'white', 
-          // },
-        }}
-      />
-    </Stack>
-  )
+    <ThemeProvider>
+      <Layout_stack />
+    </ThemeProvider>
+  );
 }

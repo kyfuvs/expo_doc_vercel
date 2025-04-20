@@ -1,33 +1,37 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { Link } from 'expo-router'
-import React from 'react'
+import { View, StyleSheet } from 'react-native';
+import ButtonViewer from '../../components/buttonViewer';
+import ImageViewer from '@/components/ImageViewer';
+import { useTheme } from '@/dark_mode/hook/useTheme';
 
-const index = () => {
+const PlaceholderImage = require("@/assets/images/background-image.png");
+
+export default function Index() {
+  const { colors } = useTheme();  // 🌓 grab current theme colors
+
   return (
-    <View style={styles.container}>
-      <Text style={[styles.text, { fontSize:'22px', fontWeight: 'bold' }]}>HOME</Text>
-      {/* <Link href={'/about'} style={styles.button}>
-        About
-      </Link> */}
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <View style={styles.imageContainer}>
+        <ImageViewer imgSource={PlaceholderImage} />
+      </View>
+      <View style={styles.footerContainer}>
+        <ButtonViewer label="Choose a photo" theme="primary" />
+        <ButtonViewer label="Use this photo" />
+      </View>
     </View>
-  )
+  );
 }
-
-export default index
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor:'black',
+    alignItems: 'center',
   },
-  text: {
-    color: 'white',
+  imageContainer: {
+    flex: 1,
+    paddingTop: 28,
   },
-  button:{
-    fontSize:18,
-    textDecorationLine:'underline',
-    color:'#fff',
-  }
-})
+  footerContainer: {
+    flex: 1 / 3,
+    alignItems: 'center',
+  },
+});

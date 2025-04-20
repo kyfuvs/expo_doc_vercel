@@ -1,53 +1,61 @@
+// project/app/(tabs)/Tabs_Layout.js
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import Toggler_dark_mode from "../../dark_mode/components/toggler_dark_mode"; // ✅ Import it
+import { useTheme } from '@/dark_mode/hook/useTheme';
 
 export default function Tabs_Layout() {
+ const { colors } = useTheme();
   return (
-    <Tabs 
+    <Tabs
       screenOptions={{
-        headerStyle:{
-            backgroundColor:'black',
-            borderBottomColor:'black',
+        headerStyle: {
+        //   backgroundColor: 'black',
+        //   borderBottomColor: 'black',
+          backgroundColor: colors.background,
+          borderBottomColor: colors.background,
         },
-        headerTintColor:'white',
-        headerShadowVisible:true,
-        tabBarActiveTintColor:'#ffd33d', //orange-color
+        // headerTintColor: 'white',
+        headerTintColor: colors.text,
+        headerShadowVisible: true,
+        tabBarActiveTintColor: '#ffd33d',
+        tabBarStyle: {
+        //   backgroundColor: 'black',
+          backgroundColor: colors.background,
+        },
+        headerRight: () => <Toggler_dark_mode />, // ✅ Add this
       }}
     >
       <Tabs.Screen
-        name='index'
+        name="index"
         options={{
-        //   headerShown:false, 
-          headerTitle:'Sticker Smash',
-          tabBarLabel:'Home',
-          tabBarIcon:({focused,color})=>(
-             <Ionicons 
-               name={focused ? 'home-sharp':'home-outline'}
-               color={focused ? '#ffd33d':'white'}
-               size={24}/>
-            ),
-          tabBarStyle: {
-            backgroundColor: 'black', // ✅ set background
-          },
+          headerTitle: 'Sticker Smash',
+          headerTitleAlign: 'center',
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name={focused ? 'home-sharp' : 'home-outline'}
+              color={focused ? '#ffd33d' : 'white'}
+              size={24}
+            />
+          ),
         }}
       />
-      <Tabs.Screen 
+      <Tabs.Screen
         name="about"
         options={{
-          headerShown:false, 
-          tabBarLabel:'About',
-          tabBarIcon:({focused,color})=>(
-            <Ionicons 
-              name={focused ? 'information-circle':'information-circle-outline'}
-              color={focused ? '#ffd33d':'white'}
-              size={24}/>
-           ),
-          tabBarStyle: {
-            backgroundColor: 'black', // ✅ set background
-          },
+          headerShown: true, // ✅ Make sure it's true so the header shows
+          headerTitle: 'About', // You can customize this too
+          tabBarLabel: 'About',
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name={focused ? 'information-circle' : 'information-circle-outline'}
+              color={focused ? '#ffd33d' : 'white'}
+              size={24}
+            />
+          ),
         }}
       />
-    
     </Tabs>
-  )
+  );
 }

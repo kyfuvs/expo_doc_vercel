@@ -1,0 +1,6 @@
+** install 
+1. >>
+2. >> npx expo install expo-image
+===============
+** for dark mode
+3. >> expo install @react-native-async-storage/async-storage
