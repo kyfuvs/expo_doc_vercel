@@ -35,7 +35,7 @@ export default function Tabs_Layout() {
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? 'home-sharp' : 'home-outline'}
-              color={focused ? '#ffd33d' : 'white'}
+              color={focused ? '#ffd33d' : 'grey'}
               size={24}
             />
           ),
@@ -46,11 +46,12 @@ export default function Tabs_Layout() {
         options={{
           headerShown: true, // ✅ Make sure it's true so the header shows
           headerTitle: 'About', // You can customize this too
+          headerTitleAlign: 'center',
           tabBarLabel: 'About',
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? 'information-circle' : 'information-circle-outline'}
-              color={focused ? '#ffd33d' : 'white'}
+              color={focused ? '#ffd33d' : 'grey'}
               size={24}
             />
           ),

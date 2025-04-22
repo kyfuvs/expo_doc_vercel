@@ -1,6 +1,11 @@
 ** install 
-1. >>
-2. >> npx expo install expo-image
+1. >> npx create-expo-app@latest StickerSmash
+=========
+** Reset
+1. >> npm run reset-project
+==========
+** Image
+1. >> npx expo install expo-image
 ===============
 ** for dark mode
-3. >> expo install @react-native-async-storage/async-storage
+1. >> expo install @react-native-async-storage/async-storage
